@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>伯乐在线文章分享书签</title>
+    <title>伯乐在线文章分享书签工具</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="伯乐在线文章分享书签">
+    <meta name="description" content="伯乐在线文章分享书签| Bookmarklet for Jobbole">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
     <link href='http://fonts.useso.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
@@ -14,46 +14,28 @@
 
 <body>
     <section class="page-header">
-        <h1 class="project-name">伯乐在线文章分享书签</h1>
+        <h1 class="project-name">伯乐在线文章分享书签工具</h1>
         <h2 class="project-tagline">分享有价值的内容与观点</h2>
         <a href="https://github.com/jiacai2050/jobbole" class="btn">View on GitHub</a>
         <a href="https://github.com/jiacai2050/jobbole/zipball/master" class="btn">Download .zip</a>
         <a href="https://github.com/jiacai2050/jobbole/tarball/master" class="btn">Download .tar.gz</a>
     </section>
     <section class="main-content">
-        <p>本书签主要功能是方便用户向<a href="http://top.jobbole.com/">伯乐在线 | 头条</a>分享文章，虽然官方也提供了<a href="http://blog.jobbole.com/93269/">浏览器扩展</a>，个人觉得安装扩展显得有些“笨重”，而且最主要的是消耗系统资源。于是，参考 <a href="https://getpocket.com/add">pocket</a> 与 <a href="https://1.qinghuai.org/stories/new">一点黑科技</a>，写了本书签，希望对大家有帮助。
+    <h2>
+<a id="bookmarklet" class="anchor" href="#bookmarklet" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bookmarklet for Jobbole</h2>
+        <p>本书签工具主要功能是方便用户向<a href="http://top.jobbole.com/">伯乐在线 | 头条</a>分享文章，虽然官方也提供了<a href="http://blog.jobbole.com/93269/">浏览器扩展</a>，个人觉得安装扩展显得有些“笨重”，而且最主要的是消耗系统资源。于是，参考 <a href="https://getpocket.com/add">pocket</a> 与 <a href="https://1.qinghuai.org/stories/new">一点黑科技</a>，写了本书签工具，希望对大家有帮助。
             <g-emoji alias="blush" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f60a.png">😊</g-emoji>
         </p>
         <h2>
-<a id="使用方法" class="anchor" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95" aria-hidden="true"><span class="octicon octicon-link"></span></a>使用方法</h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>使用方法</h2>
         <p>将下面的<code>+ Jobbole</code> 链接拖到浏览器的书签栏即可。</p>
-        <p><a href="javascript:(function()%20%7Bvar%20meta%20%3D%20document.querySelector(%22meta%5Bname%3D%5C'description%5C'%5D%22)%3B%20if(meta)%20%7Bmeta%20%3D%20meta.getAttribute(%22content%22)%3B%20%7D%20else%20%7Bmeta%20%3D%20%22%22%3B%20%7D%20window.location%3D%22http%3A%2F%2Ftop.jobbole.com%2Fsubmit%2F%3Futm_source%3Dbookmark%26utm_medium%3DtoolBar%26source%3D%22%2BencodeURIComponent(document.location)%2B%22%26title%3D%22%2BencodeURIComponent(document.title)%2B%22%26excerpt%3D%22%2BencodeURIComponent(meta)%3B%20%7D)()%0A" style="border: 1px solid #ddd; padding: 0.5em; background-color:#f8f8f8; line-height: 1.5em; margin-left: 1em;">
+        <p><a href="javascript:(function()%20%7Bvar%20excerpt%20%3D%20window.getSelection%20%3F%20window.getSelection().toString()%20%3A%20%22%22%3B%20if(excerpt%20%3D%3D%3D%20%22%22)%20%7Bvar%20meta%20%3D%20document.querySelector(%22meta%5Bname%3D%5C'description%5C'%5D%22)%3B%20if(meta)%20%7Bexcerpt%20%3D%20meta.getAttribute(%22content%22)%3B%20%7D%20%7D%3B%20window.location%3D%22http%3A%2F%2Ftop.jobbole.com%2Fsubmit%2F%3Futm_source%3Dbookmark%26utm_medium%3DtoolBar%26source%3D%22%2BencodeURIComponent(document.location)%2B%22%26title%3D%22%2BencodeURIComponent(document.title)%2B%22%26excerpt%3D%22%2BencodeURIComponent(excerpt)%3B%20%7D)()" style="border: 1px solid #ddd; padding: 0.5em; background-color:#f8f8f8; line-height: 1.5em; margin-left: 1em;">
 + Jobbole</a></p>
-        <p>点击该书签后，当前所在的页面会被自动提交到伯乐在线<a href="http://top.jobbole.com/submit/">投稿页面</a>。</p> 
-        <p>该书签会自动填写标题、网址和摘要，做到真正的快捷高效。</p>
-        <h2>
-<a id="开发过程" class="anchor" href="#%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>开发过程</h2>
-        <ol>
-            <li>
-                <p>编码源代码</p>
-                <div class="highlight highlight-source-js"><pre>javascript<span class="pl-k">:</span>(<span class="pl-k">function</span>() {
-<span class="pl-k">var</span> meta <span class="pl-k">=</span> <span class="pl-c1">document</span>.querySelector(<span class="pl-s"><span class="pl-pds">"</span>meta[name=<span class="pl-cce">\'</span>description<span class="pl-cce">\'</span>]<span class="pl-pds">"</span></span>);
-<span class="pl-k">if</span>(meta) {
-    meta <span class="pl-k">=</span> meta.<span class="pl-c1">getAttribute</span>(<span class="pl-s"><span class="pl-pds">"</span>content<span class="pl-pds">"</span></span>);
-} <span class="pl-k">else</span> {
-    meta <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>;
-}
-<span class="pl-c1">window</span>.<span class="pl-c1">location</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>http://top.jobbole.com/submit/?utm_source=bookmark&amp;utm_medium=toolBar&amp;source=<span class="pl-pds">"</span></span><span class="pl-k">+</span>encodeURIComponent(<span class="pl-c1">document</span>.<span class="pl-c1">location</span>)<span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">"</span>&amp;title=<span class="pl-pds">"</span></span><span class="pl-k">+</span>encodeURIComponent(<span class="pl-c1">document</span>.<span class="pl-c1">title</span>)<span class="pl-k">+</span><span class="pl-s"><span class="pl-pds">"</span>&amp;excerpt=<span class="pl-pds">"</span></span><span class="pl-k">+</span>encodeURIComponent(meta);
-})()</pre></div>
-            </li>
-            <li>
-                <p>对源代码进行<code>encodeURIComponent</code>，可使用<a href="http://tool.oschina.net/encode?type=4">开源中国在线编码转换</a></p>
-                <p> 需要注意的是，代码起始处的
-                    <code>javascript:</code>中的<code>:</code>不需要编码，需要手动改过来。</p>
-            </li>
-        </ol>
+        <p>点击该书签工具后，当前所在的页面会被自动提交到伯乐在线<a href="http://top.jobbole.com/submit/">投稿页面</a>。</p> 
+        <p>该书签工具会自动填写标题、网址和摘要，做到真正的快捷高效。</p>
+        <p>摘要优先使用当前选中的文本，如果没有就去查找 meta 标签中的 description</p>
         <footer class="site-footer">
-            <span class="site-footer-owner"><a href="https://github.com/jiacai2050/jobbole">伯乐在线文章分享书签</a> is maintained by <a href="https://github.com/jiacai2050">jiacai2050</a>.</span>
+            <span class="site-footer-owner"><a href="https://github.com/jiacai2050/jobbole">Bookmarklet for Jobbole</a> is maintained by <a href="https://github.com/jiacai2050">jiacai2050</a>.</span>
             <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
         </footer>
     </section>
